@@ -8,7 +8,10 @@ public class MainDeckOfCard {
             for (num=1;num<=4;num++)
             {
                 distrubuteCards.DistrubuteCardsplayers(num);
+                System.out.println(".......................................................");
                 System.out.println("Players :"+num+ "");
+                System.out.println(".......................................................");
+                distrubuteCards.showShuffledCards(num);
             }
         }
         }
