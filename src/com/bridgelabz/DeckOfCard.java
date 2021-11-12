@@ -6,20 +6,15 @@ public class DeckOfCard {
     int arr[][] = new int[4][13];
     void DistrubuteCardsplayers(int num){
         for(int i=0;i<9;i++){
-            giveCards(num);
+            shuffleCards(num);
         }
     }
-
-    //Allowed Only One Card Randomly
-
-    void giveCards(int num){
+    void shuffleCards(int num){
         Random random = new Random();
-
-
         int suit = random.nextInt(4);
         int Rank = random.nextInt(13);
         if (arr[suit][Rank]!=0) {
-            giveCards(num);
+            shuffleCards(num);
         }
         else {
             arr[suit][Rank]=num;
@@ -33,17 +28,22 @@ public class DeckOfCard {
                 return "Clubs";
             case 1:
                 return "Dimond";
-
             case 2:
                 return "Hearts";
             case 3:
                 return "Spades";
-
             default:
                 return "";
-
         }
-
+    }
+    void showShuffledCards(int num){
+        for(int suit=0;suit<4;suit++){
+            for(int Rank=0;Rank<13;Rank++){
+                if (arr[suit][Rank]==num){
+                    System.out.println(getSuit(suit)+""+getRank(Rank)+"\t");
+                }
+            }
+        }
     }
     String getRank(int Ranknum)
     {
