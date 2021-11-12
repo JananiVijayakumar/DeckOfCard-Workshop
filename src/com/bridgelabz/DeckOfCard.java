@@ -1,23 +1,81 @@
 package com.bridgelabz;
 
+import java.util.Random;
+
 public class DeckOfCard {
-    public static void main(String[] args) {
-        String[] Suits = {"Clubs", "Diamonds", "Hearts", "Spades"};
-        String[] Ranks = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"};
-        String[] cardsArray = new String[52];
-        int start = 0, end = 12, k = 0;
-        for (int i = 0; i < 4; i++) {
-            for (int j = start; j <= end; j++) {
-                cardsArray[j] = Suits[i] + " " + Ranks[k];
-                k++;
-            }
-            k = 0;
-            start = end + 1;
-            end += 13;
+    int arr[][] = new int[4][13];
+    void DistrubuteCardsplayers(int num){
+        for(int i=0;i<9;i++){
+            giveCards(num);
         }
-        System.out.println("players of the game :");
-        for (int i = 1; i <= 4; i++) {
-            System.out.print("Player " + i + ": \n");
+    }
+
+    //Allowed Only One Card Randomly
+
+    void giveCards(int num){
+        Random random = new Random();
+
+
+        int suit = random.nextInt(4);
+        int Rank = random.nextInt(13);
+        if (arr[suit][Rank]!=0) {
+            giveCards(num);
+        }
+        else {
+            arr[suit][Rank]=num;
+        }
+    }
+
+    String getSuit(int SuitNum)
+    {
+        switch (SuitNum){
+            case 0:
+                return "Clubs";
+            case 1:
+                return "Dimond";
+
+            case 2:
+                return "Hearts";
+            case 3:
+                return "Spades";
+
+            default:
+                return "";
+
+        }
+
+    }
+    String getRank(int Ranknum)
+    {
+        switch (Ranknum){
+            case 0:
+                return "2";
+            case 1:
+                return "3";
+            case 2:
+                return "4";
+            case 3:
+                return "5";
+            case 4:
+                return "6";
+            case 5:
+                return "7";
+            case 6:
+                return "8";
+            case 7:
+                return "9";
+            case 8:
+                return "10";
+            case 9:
+                return "jack";
+            case 10:
+                return "queen";
+            case 11:
+                return "king";
+            case 12:
+                return "Aca";
+            default:
+                return "";
         }
     }
 }
